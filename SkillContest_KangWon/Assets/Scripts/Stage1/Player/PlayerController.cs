@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     private float playerMaxMp;
     private float curTime;
     private bool isPlayerDie = false;
+    public bool isInvincible { get; set; }
 
     private void Awake()
     {
@@ -130,13 +131,27 @@ public class PlayerController : MonoBehaviour, IDamagable
         playerMpBar.SetGauge(playerMp);
     }
 
+    public void PlayerPlusHp(float plus)
+    {
+        playerHp += plus;
+        playerMp = Mathf.Clamp(playerMp, 0, playerMaxMp);
+        playerHpBar.SetHpBarOneSecond(playerHp);
+    }
+
     public bool PlayerMpEnoughCheck(float check)
     {
         return (check > playerMp) ? false : true;
     }
 
+    public void PlayerSpeedChange(float value)
+    {
+        playerSpeed += value;
+    }
+
     public void ApplyDamage(float damage)
     {
+        if (isInvincible) return;
+
         playerHp -= damage;
         playerHp = Mathf.Clamp(playerHp, 0, playerMaxHp);
         playerHpBar.SetHpBar(playerHp);

@@ -108,6 +108,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 2017631860427333912}
   enemyAnimator: {fileID: 962982742469097984}
   attackRadius: 1.2
+  enemyScore: 20
 --- !u!1001 &1513555391820589965
 PrefabInstance:
   m_ObjectHideFlags: 0

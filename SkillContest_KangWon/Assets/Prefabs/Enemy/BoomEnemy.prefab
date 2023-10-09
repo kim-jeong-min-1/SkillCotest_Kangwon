@@ -140,6 +140,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 3963264106771617579}
   enemyAnimator: {fileID: 0}
   attackRadius: 1.5
+  enemyScore: 25
   boomEffect: {fileID: 562656523966415564, guid: 02638770ef199db46a44ced9f6856c5e, type: 3}
   boomPos: {fileID: 4467989005680082335}
 --- !u!1001 &4467989005610621197

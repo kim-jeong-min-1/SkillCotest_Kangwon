@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] protected GaugeBar enemyHpBar;
     [SerializeField] protected Animator enemyAnimator;
     [SerializeField] protected float attackRadius;
+    [SerializeField] protected int enemyScore;
 
     protected NavMeshAgent enemyAgnet;
     protected LayerMask targetLayer;
@@ -81,8 +82,11 @@ public class Enemy : MonoBehaviour, IDamagable
     public virtual void EnemyDie()
     {
         enemyAnimator.SetTrigger("Die");
-
         var delay = enemyAnimator.GetCurrentAnimatorStateInfo(0).speed;
+
+        StageManager.Inst.enemyList.Remove(this);
+        StageManager.Inst.AddScore(enemyScore);
+
         Destroy(gameObject, delay);
     }
 

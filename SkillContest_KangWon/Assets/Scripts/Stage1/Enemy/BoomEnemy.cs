@@ -27,6 +27,9 @@ public class BoomEnemy : Enemy
         }
 
         Instantiate(boomEffect, boomPos.position, Quaternion.identity);
+
+        StageManager.Inst.enemyList.Remove(this);
+        StageManager.Inst.AddScore(enemyScore);
         Destroy(gameObject);
     }
 }

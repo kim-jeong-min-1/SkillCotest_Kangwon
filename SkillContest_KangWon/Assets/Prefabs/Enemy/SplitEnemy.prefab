@@ -108,6 +108,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 9044786881889589715}
   enemyAnimator: {fileID: 8396014137142664464}
   attackRadius: 1.12
+  enemyScore: 50
   splitCount: 0
   splitObject: {fileID: 5222243335625739271, guid: 06166a07b2c2d484084d98fef82ce7b6, type: 3}
 --- !u!1001 &8396014136920851458

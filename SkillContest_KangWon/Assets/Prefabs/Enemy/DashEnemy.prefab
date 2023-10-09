@@ -109,6 +109,7 @@ MonoBehaviour:
   enemyHpBar: {fileID: 8164102191868267082}
   enemyAnimator: {fileID: 8205831075400240010}
   attackRadius: 5.5
+  enemyScore: 30
   dashPower: 2
   rb: {fileID: 8668756729321172571}
 --- !u!54 &8668756729321172571

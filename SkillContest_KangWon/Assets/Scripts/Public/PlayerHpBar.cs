@@ -29,6 +29,12 @@ public class PlayerHpBar : MonoBehaviour
         curSmoothRoutine = StartCoroutine(SmoothTempHp());
     }
 
+    public void SetHpBarOneSecond(float curHp)
+    {
+        mainGauge.SetGauge(curHp);
+        tempGauge.SetGauge(curHp);
+    }
+
     private IEnumerator SmoothTempHp()
     {
         float start = tempGauge.GetCurGauge();

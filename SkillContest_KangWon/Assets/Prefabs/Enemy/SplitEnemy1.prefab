@@ -102,12 +102,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatus:
     enemyHp: 25
-    enemySpeed: 1.1
+    enemySpeed: 0.8
     enemyDamage: 3
     enemyAttackDelay: 0.25
   enemyHpBar: {fileID: 4717530805587858570}
   enemyAnimator: {fileID: 5222243335474726180}
   attackRadius: 0.62
+  enemyScore: 40
   splitCount: 1
   splitObject: {fileID: 4315497530231827313, guid: f1ae8a71af3a4c94dab9831bf13da2e2, type: 3}
 --- !u!1001 &5222243335474726177
