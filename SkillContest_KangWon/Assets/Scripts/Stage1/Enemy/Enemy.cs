@@ -55,6 +55,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void EnemyAI_Update()
     {
+        if (isEnemyDie) return;
+
         if (isCanAttack)
         {
             curAttackTime += Time.deltaTime;
@@ -93,6 +95,7 @@ public class Enemy : MonoBehaviour, IDamagable
         if (enemyHp <= 0 && !isEnemyDie)
         {
             isEnemyDie = true;
+            enemyAgnet.isStopped = true;
             EnemyDie();
         }
     }

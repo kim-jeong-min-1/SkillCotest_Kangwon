@@ -5,19 +5,16 @@ using UnityEngine;
 public class DashEnemy : Enemy
 {
     [SerializeField] private float dashPower;
-    [SerializeField] private float dashTime;
+    [SerializeField] private Rigidbody rb;
+    private bool isDashing = false;
 
     protected override void EnemyAI_Update()
     {
-        if (isCanAttack)
+        if (isCanAttack && !isDashing)
         {
-            curAttackTime += Time.deltaTime;
-            if (curAttackTime >= attackDelay)
-            {
-                EnemyAttack();
-                curAttackTime = 0;
-                enemyAgnet.isStopped = true;
-            }
+            EnemyAttack();
+            enemyAgnet.isStopped = true;
+            isDashing = true;
         }
     }
 
@@ -25,38 +22,31 @@ public class DashEnemy : Enemy
     {
         var rand = Random.Range(0, 2);
 
-        if(rand == 0)
+        if (rand == 0)
         {
-            var dis = (target.position - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(dis, Vector3.up);
+            var dir = (target.position - transform.position).normalized;
+            transform.rotation = Quaternion.Euler(dir);
 
-            StartCoroutine(Dash(target.position));
+            StartCoroutine(Dash(dir));
         }
         else
         {
             var randRot = Random.Range(0, 360);
-            transform.rotation = Quaternion.Euler(0, randRot, 0);
+            var rot = new Vector3(0, randRot, 0);
 
-            var pos = transform.forward * dashPower;
-            StartCoroutine(Dash(pos));
+            transform.rotation = Quaternion.Euler(rot);
+
+            StartCoroutine(Dash(transform.forward));
         }
     }
 
     private IEnumerator Dash(Vector3 pos)
     {
-        float curTime = 0;
-        float percent = 0;
-        Vector3 startPos = transform.position;
+        rb.AddForce(pos * dashPower, ForceMode.Impulse);
 
-        while (percent < 1)
-        {
-            curTime += Time.deltaTime;
-            percent = curTime / dashTime;
-
-            transform.position = Vector3.Lerp(startPos, pos, percent);
-            yield return null;
-        }
+        yield return new WaitForSeconds(attackDelay);
         enemyAgnet.isStopped = false;
+        isDashing = false;
     }
 
     private void OnCollisionEnter(Collision collision)
