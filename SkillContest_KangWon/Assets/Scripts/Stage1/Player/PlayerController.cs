@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamagable
@@ -66,12 +65,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         var cam = Camera.main.transform;
         if (moveInput != Vector3.zero)
         {
-
-            var moveDirection = cam.forward * moveInput.z + cam.right * moveInput.x;
-            rotate = moveDirection;
-            moveDirection.y = 0;
-
-            rb.velocity = moveDirection * playerSpeed;
+            rotate = -moveInput;
+            rb.velocity = -moveInput * playerSpeed;
 
             platerAnimator.SetBool("isWalk", true);
         }
@@ -80,6 +75,7 @@ public class PlayerController : MonoBehaviour, IDamagable
             rb.velocity = moveInput;
             platerAnimator.SetBool("isWalk", false);
         }
+        rb.AddForce(Physics.gravity * 2f);
     }
 
     private void Rotate(Vector3 rotate)

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8668756729321172550}
   - component: {fileID: 8668756729321172549}
-  - component: {fileID: 8668756729321172548}
   - component: {fileID: 8668756729321172551}
   - component: {fileID: 8668756729321172570}
   - component: {fileID: 8668756729321172571}
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8668756729321172545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.52, y: 0, z: 1.16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9207368840810048355}
@@ -60,22 +59,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!208 &8668756729321172548
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8668756729321172545}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!65 &8668756729321172551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84,7 +67,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8668756729321172545}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.71, y: 0.9488919, z: 0.93}
@@ -103,14 +86,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatus:
     enemyHp: 200
-    enemySpeed: 1
-    enemyDamage: 10
+    enemySpeed: 6
+    enemyDamage: 20
     enemyAttackDelay: 3
   enemyHpBar: {fileID: 8164102191868267082}
   enemyAnimator: {fileID: 8205831075400240010}
-  attackRadius: 5.5
+  attackRadius: 15.5
   enemyScore: 30
-  dashPower: 2
+  dashPower: 15
   rb: {fileID: 8668756729321172571}
 --- !u!54 &8668756729321172571
 Rigidbody:

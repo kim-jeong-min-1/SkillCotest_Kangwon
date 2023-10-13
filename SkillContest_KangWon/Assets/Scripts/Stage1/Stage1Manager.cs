@@ -13,7 +13,8 @@ public class Stage1Manager : StageManager
     [SerializeField] private float spawnTimeMinusValue;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Transform> spawnPoints;
-    private float curTime;
+    private float curTime = 0;
+    private float maximumMinValue = 0.1f;
 
     private void Start()
     {
@@ -48,6 +49,8 @@ public class Stage1Manager : StageManager
 
             minSpawnTime -= spawnTimeMinusValue;
             maxSpawnTime -= spawnTimeMinusValue;
+            minSpawnTime = Mathf.Clamp(minSpawnTime, maximumMinValue, 100);
+            maxSpawnTime = Mathf.Clamp(maxSpawnTime, maximumMinValue, 100);
         }
     }
 

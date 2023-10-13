@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4315497530231827317}
   - component: {fileID: 4315497530231827316}
-  - component: {fileID: 4315497530231827315}
   - component: {fileID: 4315497530231827314}
   - component: {fileID: 4315497530231827313}
   m_Layer: 6
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4315497530231827312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -28.96, y: 0, z: -11.91}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4353014219480218589}
@@ -59,22 +58,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!208 &4315497530231827315
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4315497530231827312}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.435, y: 0.5, z: 0.38}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.84, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!65 &4315497530231827314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102,12 +85,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatus:
     enemyHp: 15
-    enemySpeed: 0.7
+    enemySpeed: 2
     enemyDamage: 1
     enemyAttackDelay: 0.25
   enemyHpBar: {fileID: 3666653313566564782}
   enemyAnimator: {fileID: 4315497530347002760}
-  attackRadius: 0.45
+  attackRadius: 0.92
   enemyScore: 30
   splitCount: 2
   splitObject: {fileID: 4387809927027772790, guid: 4307a1edf7e36324a89142a80ab793af, type: 3}

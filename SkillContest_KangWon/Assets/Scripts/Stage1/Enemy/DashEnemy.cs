@@ -49,11 +49,12 @@ public class DashEnemy : Enemy
         isDashing = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Player"))
+
+        if (other.transform.CompareTag("Player"))
         {
-            collision.collider.GetComponent<IDamagable>().ApplyDamage(enemyDamage);
+            other.GetComponent<IDamagable>().ApplyDamage(enemyDamage);
         }
     }
 }
