@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] protected Animator enemyAnimator;
     [SerializeField] protected float attackRadius;
     [SerializeField] protected int enemyScore;
+    [SerializeField] protected GameObject exp;
 
     protected NavMeshAgent enemyAgnet;
     protected LayerMask targetLayer;
@@ -78,7 +79,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         target.GetComponent<IDamagable>().ApplyDamage(enemyDamage);
     }
-    
+
     public virtual void EnemyDie()
     {
         enemyAnimator.SetTrigger("Die");
@@ -87,6 +88,7 @@ public class Enemy : MonoBehaviour, IDamagable
         StageManager.Inst.enemyList.Remove(this);
         StageManager.Inst.AddScore(enemyScore);
 
+        if (exp != null) Instantiate(exp, transform.position, Quaternion.identity);
         Destroy(gameObject, delay);
     }
 

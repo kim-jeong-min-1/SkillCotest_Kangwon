@@ -43,9 +43,10 @@ GameObject:
   - component: {fileID: 4467989006985478175}
   - component: {fileID: 4467989006985478169}
   - component: {fileID: 4467989006985478170}
+  - component: {fileID: 9079404112383705361}
   m_Layer: 6
   m_Name: BoomEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,15 +118,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatus:
     enemyHp: 100
-    enemySpeed: 5
+    enemySpeed: 8
     enemyDamage: 30
     enemyAttackDelay: 0
   enemyHpBar: {fileID: 3963264106771617579}
   enemyAnimator: {fileID: 0}
   attackRadius: 3.8
   enemyScore: 25
+  exp: {fileID: 5820335291347661889, guid: 243338a53fdefe64d96d633c68b61b08, type: 3}
   boomEffect: {fileID: 562656523966415564, guid: 02638770ef199db46a44ced9f6856c5e, type: 3}
   boomPos: {fileID: 4467989005680082335}
+--- !u!54 &9079404112383705361
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467989006985478164}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.2
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &4467989005610621197
 PrefabInstance:
   m_ObjectHideFlags: 0

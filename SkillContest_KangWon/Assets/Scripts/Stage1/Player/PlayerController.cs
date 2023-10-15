@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamagable
+public class PlayerController : Singletone<PlayerController>, IDamagable
 {
     [SerializeField] private PlayerHpBar playerHpBar;
     [SerializeField] private GaugeBar playerMpBar;
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour, IDamagable
     [SerializeField] private float playerAttackDelay;
     [SerializeField] private float playerAttackDamage;
     [SerializeField] private float playerMpRePlay;
+    [Space(10)]
+    [SerializeField] private PlayerDefaultAttack defaultAttack;
+    public Dictionary<PlayerAttackType, PlayerAttacker> playerAttackers;
+
     private Rigidbody rb;
     private Vector3 moveInput;
     private Vector3 rotate;
@@ -27,8 +32,9 @@ public class PlayerController : MonoBehaviour, IDamagable
     private bool isPlayerDie = false;
     public bool isInvincible { get; set; }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         PlayerInit();
     }
     public void PlayerInit()
@@ -39,6 +45,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         playerMpBar.Init(playerMaxMp);
         playerMp = 0f;
 
+        playerAttackers = new();
+        defaultAttack.SetAttacker();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -49,12 +57,8 @@ public class PlayerController : MonoBehaviour, IDamagable
     }
     private void Update()
     {
-        curTime += Time.deltaTime;
-        if(curTime >= playerAttackDelay)
-        {
-            PlayerAttack();
-        }
         PlayerPlusMp(playerMpRePlay);
+        aim.transform.position = Input.mousePosition;
     }
 
     private void Movement()
@@ -87,31 +91,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void PlayerAttack()
     {
-        if (Input.GetMouseButton(0))
-        {
-            var ray = Camera.main.ScreenPointToRay(aim.position);
-            RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Enemy")))
-            {
-                curTime = 0;
-                StartCoroutine(attack(hit));
-            }
-        }
-
-        IEnumerator attack(RaycastHit hit)
-        {
-            attackLine.gameObject.SetActive(true);
-            attackLine.SetPosition(0, firePos.position);
-            attackLine.SetPosition(1, hit.point);
-
-            model.rotation = Quaternion.LookRotation(hit.point, Vector3.up);
-            hit.transform.GetComponent<IDamagable>().ApplyDamage(playerAttackDamage);
-
-            //파티클 생성
-            yield return new WaitForSeconds(0.1f);
-            attackLine.gameObject.SetActive(false);
-        }
     }
 
     public void PlayerMinusMp(float minus)

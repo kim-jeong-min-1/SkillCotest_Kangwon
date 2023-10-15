@@ -1,4 +1,3 @@
-
 Shader "COPPRA/DEFAULT1" 
 {
     Properties 

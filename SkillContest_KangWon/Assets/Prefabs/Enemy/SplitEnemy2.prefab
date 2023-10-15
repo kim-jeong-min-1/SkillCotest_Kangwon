@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4315497530231827316}
   - component: {fileID: 4315497530231827314}
   - component: {fileID: 4315497530231827313}
+  - component: {fileID: -3019512757449861743}
   m_Layer: 6
   m_Name: SplitEnemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +70,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.81, z: 1}
-  m_Center: {x: 0, y: 1.57, z: 0}
+  m_Size: {x: 0.95, y: 2.0951166, z: 1}
+  m_Center: {x: 0, y: 0.92744154, z: 0}
 --- !u!114 &4315497530231827313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStatus:
     enemyHp: 15
-    enemySpeed: 2
+    enemySpeed: 4
     enemyDamage: 1
     enemyAttackDelay: 0.25
   enemyHpBar: {fileID: 3666653313566564782}
@@ -94,6 +95,22 @@ MonoBehaviour:
   enemyScore: 30
   splitCount: 2
   splitObject: {fileID: 4387809927027772790, guid: 4307a1edf7e36324a89142a80ab793af, type: 3}
+--- !u!54 &-3019512757449861743
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315497530231827312}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.2
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &4315497529814290267
 PrefabInstance:
   m_ObjectHideFlags: 0
